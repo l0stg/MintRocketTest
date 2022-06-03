@@ -22,7 +22,7 @@ class MainActivity() : AppCompatActivity() {
         val buttonGet = findViewById<Button>(R.id.buttget)
 
         fun get(){
-            call.enqueue(object : Callback<MutableList<dataModels>> {
+            call.clone().enqueue(object : Callback<MutableList<dataModels>> {
                 override fun onResponse(
                     call: Call<MutableList<dataModels>>,
                     response: Response<MutableList<dataModels>>

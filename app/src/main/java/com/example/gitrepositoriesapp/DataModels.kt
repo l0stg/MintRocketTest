@@ -6,4 +6,7 @@ data class dataModels(
     val description: String? = null,
     val url: String
 )
+data class Owners(
+    val login: String
+)
 
