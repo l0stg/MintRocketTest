@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface ApiService {
     @GET("/repositories")
-    fun getDataList(): Response<DataModels>
+    fun getDataList(): Call<MutableList<DataModels>>
 }

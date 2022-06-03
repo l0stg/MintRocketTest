@@ -1,18 +1,21 @@
 package com.example.gitrepositoriesapp
 
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL = "https://api.github.com"
+
 
 object RetrofitInstance {
-    private val retrofit by lazy {
-        Retrofit.Builder()
-            .baseUrl(BASE_URL)
+    private val client = OkHttpClient.Builder().build()
+
+    private val retrofit = Retrofit.Builder()
+            .baseUrl("https://api.github.com")
             .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
             .build()
-    }
-    val api: ApiService by lazy {
-        retrofit.create(ApiService::class.java)
+
+    fun <T> buildService(service: Class<T>): T {
+        return retrofit.create(service)
     }
 }
