@@ -1,9 +1,11 @@
 package com.example.gitrepositoriesapp
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.view.menu.MenuView
 
 import androidx.recyclerview.widget.RecyclerView
@@ -36,5 +38,9 @@ class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         name.text = dataModels.name
         url.text = dataModels.url
         desc.text = dataModels.description
+        itemView.setOnClickListener{
+            Log.d("АРААААА", "Проверяем создание говна ${dataModels.url}")
+        }
+
     }
 }

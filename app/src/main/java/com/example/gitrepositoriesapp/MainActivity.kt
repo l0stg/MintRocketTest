@@ -3,6 +3,7 @@ package com.example.gitrepositoriesapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,15 +19,16 @@ class MainActivity() : AppCompatActivity() {
         val rv = findViewById<RecyclerView>(R.id.myrecyclerview)
         val retrofitInstance = RetrofitInstance.buildService(ApiService::class.java)
         val call = retrofitInstance.getData()
+        val buttonGet = findViewById<Button>(R.id.buttget)
 
+        fun get(){
             call.enqueue(object : Callback<MutableList<dataModels>> {
                 override fun onResponse(
                     call: Call<MutableList<dataModels>>,
                     response: Response<MutableList<dataModels>>
                 ) {
                     if (response.isSuccessful) {
-                        Log.d("tagggggy", "ЧТО ТО НЕ ТАК МАТЬ ЕГО")
-                        Toast.makeText(this@MainActivity, "AAAAAAAAAAAAAAAAAAAAAAAAAA", Toast.LENGTH_LONG).show()
+                        Log.d("tagggggy", "Всё ок")
                         rv.apply {
                             layoutManager = LinearLayoutManager(this@MainActivity)
                             adapter = MyAdapter(response.body()!!)
@@ -38,6 +40,11 @@ class MainActivity() : AppCompatActivity() {
                 }
             })
         }
+
+        buttonGet.setOnClickListener() {
+        get()
+        }
+    }
 }
 
 
