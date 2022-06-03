@@ -14,7 +14,7 @@ class MyAdapter: RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     class MyViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val id: TextView = itemView.findViewById(R.id.tvId)
-        val namem: TextView = itemView.findViewById(R.id.tvName)
+        val name: TextView = itemView.findViewById(R.id.tvName)
         val login: TextView = itemView.findViewById(R.id.tvLogin)
         val desc: TextView = itemView.findViewById(R.id.tvDesc)
     }
@@ -26,7 +26,7 @@ class MyAdapter: RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.id.text = listData[position].id
-        holder.namem.text = listData[position].name
+        holder.name.text = listData[position].name
         holder.login.text = listData[position].owners.login
         holder.desc.text = listData[position].description
     }
