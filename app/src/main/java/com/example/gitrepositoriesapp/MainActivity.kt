@@ -17,22 +17,23 @@ class MainActivity() : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val rv = findViewById<RecyclerView>(R.id.myrecyclerview)
         val retrofitInstance = RetrofitInstance.buildService(ApiService::class.java)
-        val call = retrofitInstance.getDataList()
+        val call = retrofitInstance.getData()
 
-            call.enqueue(object : Callback<MutableList<DataModels>> {
+            call.enqueue(object : Callback<MutableList<dataModels>> {
                 override fun onResponse(
-                    call: Call<MutableList<DataModels>>,
-                    response: Response<MutableList<DataModels>>
+                    call: Call<MutableList<dataModels>>,
+                    response: Response<MutableList<dataModels>>
                 ) {
                     if (response.isSuccessful) {
                         Log.d("tagggggy", "ЧТО ТО НЕ ТАК МАТЬ ЕГО")
+                        Toast.makeText(this@MainActivity, "AAAAAAAAAAAAAAAAAAAAAAAAAA", Toast.LENGTH_LONG).show()
                         rv.apply {
                             layoutManager = LinearLayoutManager(this@MainActivity)
                             adapter = MyAdapter(response.body()!!)
                         }
                     }
                 }
-                override fun onFailure(call: Call<MutableList<DataModels>>, t: Throwable) {
+                override fun onFailure(call: Call<MutableList<dataModels>>, t: Throwable) {
                     Toast.makeText(this@MainActivity, "FFFFFF", Toast.LENGTH_LONG).show()
                 }
             })

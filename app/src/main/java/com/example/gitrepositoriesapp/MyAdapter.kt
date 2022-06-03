@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.view.menu.MenuView
 
 import androidx.recyclerview.widget.RecyclerView
 
-class MyAdapter( val dataModels: MutableList<DataModels>) : RecyclerView.Adapter<MyViewHolder>() {
+class MyAdapter( val date: MutableList<dataModels>) : RecyclerView.Adapter<MyViewHolder>() {
 
 
 
@@ -17,23 +18,23 @@ class MyAdapter( val dataModels: MutableList<DataModels>) : RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        return holder.bind(dataModels[position])
+        return holder.bind(date[position])
     }
 
     override fun getItemCount(): Int {
-        return dataModels.size
+        return date.size
     }
 }
-class MyViewHolder(view: View): RecyclerView.ViewHolder(view) {
-    val id: TextView = itemView.findViewById(R.id.tvId)
-    val name: TextView = itemView.findViewById(R.id.tvName)
-    val login: TextView = itemView.findViewById(R.id.tvLogin)
-    val desc: TextView = itemView.findViewById(R.id.tvDesc)
+class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    private val id: TextView = itemView.findViewById(R.id.tvId)
+    private val name: TextView = itemView.findViewById(R.id.tvName)
+    private val url: TextView = itemView.findViewById(R.id.tvLogin)
+    private val desc: TextView = itemView.findViewById(R.id.tvDesc)
 
-    fun bind(dataModels: DataModels){
+    fun bind(dataModels: dataModels){
         id.text = dataModels.id
         name.text = dataModels.name
-        login.text = dataModels.owners.login
+        url.text = dataModels.url
         desc.text = dataModels.description
     }
 }
