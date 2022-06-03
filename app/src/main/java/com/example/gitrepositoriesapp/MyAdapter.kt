@@ -30,13 +30,13 @@ class MyAdapter( var date: MutableList<dataModels>) : RecyclerView.Adapter<MyVie
 class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     private var id: TextView = itemView.findViewById(R.id.tvId)
     private var name: TextView = itemView.findViewById(R.id.tvName)
-    private var url: TextView = itemView.findViewById(R.id.tvLogin)
+    private var login: TextView = itemView.findViewById(R.id.tvLogin)
     private var desc: TextView = itemView.findViewById(R.id.tvDesc)
 
     fun bind(dataModels: dataModels){
         id.text = dataModels.id
         name.text = dataModels.name
-        url.text = dataModels.url
+        login.text = dataModels.owner.login
         desc.text = dataModels.description
         itemView.setOnClickListener{
             Log.d("АРААААА", "Проверяем создание говна ${dataModels.url}")
